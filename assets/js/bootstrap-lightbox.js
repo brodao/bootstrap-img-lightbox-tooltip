@@ -1,8 +1,3 @@
-/*!
-* bootstrap-lightbox.js v0.6.0 
-* Copyright 2013 Jason Butz
-* http://www.apache.org/licenses/LICENSE-2.0.txt
-*/
 !function ($) {
 	"use strict"; // jshint ;_;
 
