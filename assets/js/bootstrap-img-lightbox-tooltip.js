@@ -15,7 +15,7 @@
     $.MyFunc = function( ctl, options ) {
 			if ( $(ctl).attr("src") ) {
 				var imgsrc = $(ctl).attr("src")
-				$(ctl).wrap("<a href='#'/>")
+				$(ctl).wrap("<div style='pointer:cursor'>")
 				var that = $(ctl).parent()
 				$(that).click(function() {
 					$(".lightbox-content img").attr("src", imgsrc)
@@ -37,3 +37,4 @@
     };
 
 })(jQuery);
+

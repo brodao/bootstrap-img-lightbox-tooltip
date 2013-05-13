@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="chrome=1">
-	<title>Bootstrap - Lightbox</title>
+	<title>Bootstrap Image Lightbox with Tooltip</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 	<link rel="stylesheet" href="assets/css/bootstrap-lightbox.min.css">
 	<link rel="stylesheet" href="assets/prettify/prettify.css">
@@ -14,94 +14,76 @@
 	<![endif]-->
 </head>
 <body data-spy="scroll" data-target=".navbar">
-	<div id="navbar" class="navbar navbar-inverse navbar-fixed-top">
-		<div class="navbar-inner">
-			<div class="container">
-				<ul class="nav">
-					<li class="active"><a href="#home">Home</a></li>
-					<li><a href="#demo">Demo</a></li>
-					<li><a href="#usage">Usage</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
 	<!-- -->
 	<section id="home">
 <div class="jumbotron masthead">
 	<div class="container">
-		<h1>Bootstrap Lightbox</h1>
-		<p>A simple lightbox plugin based on the bootstrap modal plugin.</p>
-		<p><a href="assets/bootstrap-lightbox.zip" class="btn btn-primary btn-large">Download Bootstrap Lightbox</a></p>
+		<h1>View Actual Image in Lightbox - Bootstrap</h1>
+		<p>Let your website visitors see images in full-screen</p>
+		<p><a href="http://github.com/bootstrap-org/bootstrap-img-lightbox-tooltip" class="btn btn-primary btn-large">Download Bootstrap Image Lightbox Tooltip</a></p>
 		<ul class="masthead-links">
-			<li><a href="http://github.com/jbutz/bootstrap-lightbox">GitHub project</a></li>
-			<li>Version 0.6.0</li>
+			<li>Forked & design copied from @jbutz's <a href="http://github.com/jbutz/bootstrap-lightbox">Bootstrap Lightbox</a></li>
 		</ul>
 	</div>
 </div>
-<div class="social-btns">
-	<div class="container">
-		<ul class="social-links">
-			<li>
-				<iframe src="http://ghbtns.com/github-btn.html?user=jbutz&repo=bootstrap-lightbox&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
-			</li>
-			<li>
-				<iframe src="http://ghbtns.com/github-btn.html?user=jbutz&repo=bootstrap-lightbox&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95px" height="20px"></iframe>
-			</li>
-			<li>
-				<iframe src="http://ghbtns.com/github-btn.html?user=jbutz&type=follow&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="165px" height="20px"></iframe>
-			</li>
-		</ul>
-	</div>
-</div>
+
 	</section>
 
 	<section id="demo">
 <div class="container">
 	<div class="page-header">
-		<h1>Demo <small>See it in action!</small></h1>
+		<h1>Why the plugin <small> & See it in action!</small></h1>
 	</div>
-	<p>Click the thumbnail below to open the lightbox. This demo includes the optional <code>.lightbox-caption</code> element, which adds an image caption.</p>
+	<p>I run Codelearn (www.codelearn.org). Inside the Tutorial section, the content is on left & the Playground is on right. Earlier, the Playground was on a separate page & the content had the luxury to span the complete screen.</p>
+	<p>When we decided to combine the two views, the content on the left got pushed. The worst hit was to the images. Some of them were quite descriptive but became pretty small.</p>
+	<p>For a long time we kept on searching for 'Jquery plugin to view images full screen'. There were no good matches. I remember visiting www.fleetio.com & on their tours page the images have view full screen option. I quickly check the DOM element & came across keywords - lightbox & bootstrap. Googling for it landed me to @jbutz repo.</p>
+	<p>While it was good, I decided to further enhance to have the following :-</p>
+	<ul>
+		<li>One line initialization like <code>$("img").img_lightbox_tooltip()</code> to apply plugin to all images.</li>
+		<li>A tooltip that shows user to click on the image to enlarge it.</li>
+	</ul>
 
 	<!-- -->
 	<div class="example">
 		<ul class="thumbnails">
 			<li class="span2">
-				<a data-toggle="lightbox" href="#demoLightbox" class="thumbnail">
-					<img src="assets/img/small.png" alt="Click to view the lightbox">
-				</a>
+				<img src="assets/img/large.png" alt="Click to view the lightbox">
 			</li>
 		</ul>
 		<div id="demoLightbox" class="lightbox hide fade"  tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-header" style="position:absolute; height:20px; left:100%; margin-left: 10px; padding:0; border:0;">
+				 <button type="button" class="close" style="color:white; font-size: 30px;" onclick='$("#demoLightbox").lightbox("hide")'>&times;</button>
+			</div>
 			<div class='lightbox-content'>
-				<img src="assets/img/large.png">
-				<div class="lightbox-caption"><p>Your caption here</p></div>
+				<img src="">
 			</div>
 		</div>
 	</div>
 	<!-- -->
+
+<p>Unlike the original repo which required one Lightbox every image/link, I created only one Lightbox. The 'img' tag source is kept empty & it got picked up from the image which is clicked.</p>
 <pre class="prettyprint linenums">&lt;div id=&quot;demoLightbox&quot; class=&quot;lightbox hide fade&quot;  tabindex=&quot;-1&quot; role=&quot;dialog&quot; aria-hidden=&quot;true&quot;&gt;
-	&lt;div class='lightbox-content'&gt;
-		&lt;img src=&quot;image.png&quot;&gt;
-		&lt;div class=&quot;lightbox-caption&quot;&gt;&lt;p&gt;Your caption here&lt;/p&gt;&lt;/div&gt;
-	&lt;/div&gt;
+   &lt;div class="modal-header" 
+      style="position:absolute; height:20px; left:100%; margin-left: 10px; padding:0; border:0;"&gt;
+	 
+	 &lt;button type="button" class="close" 
+	   style="color:white; font-size: 30px;" 
+	   onclick='$("#demoLightbox").lightbox("hide")'&gt; &times; &lt;/button&gt;
+
+   &lt;/div&gt;
+   &lt;div class='lightbox-content'&gt;
+     &lt;img src=&quot;&quot;&gt;
+   &lt;/div&gt;
 &lt;/div&gt;
 </pre>
-	<!-- -->
-</div>
-	</section>
-	<section id="usage">
-<div class="container">
-	<div class="page-header">
-		<h1>Usage <small>Oooh, what does this button do?</small></h1>
-	</div>
-	
-	<h3>Via data attributes</h3>
-	<p>All you need to do is add <code>data-toggle=&quot;lightbox&quot;</code> and <code>href=&quot;#lightbox&quot;</code> or <code>data-target=&quot;#lightbox&quot;</code> to a link, and set the <code>href</code> so it references the lightbox you want to display.</p>
-	<pre class="prettyprint linenums">&lt;a data-toggle=&quot;lightbox&quot; href=&quot;#demoLightbox&quot;&gt;Open Lightbox&lt;/a&gt;</pre>
+<!-- -->
 
-	<h3>Via JavaScript</h3>
-	<p>Open the lightbox with the id <code>myLightbox</code>.</p>
-	<pre class="prettyprint linenums">$('#myLightbox').lightbox(options)</pre>
+	<p>Dont forget to add following javascript files for it to work.</p>
+<pre  class="prettyprint linenums">
+&lt;script src="assets/js/bootstrap.js"&gt;&lt;/script&gt; &lt;!-- Or just bootstrap-tooltip.js --&gt;
+&lt;script src="assets/js/bootstrap-lightbox.js"&gt;&lt;/script&gt;
+&lt;script src="assets/js/bootstrap-img-lightbox-tooltip.js"&gt;&lt;/script&gt;
+</pre>
 	
 	<h3>Options</h3>
 	<table class="table table-bordered table-striped">
@@ -115,26 +97,26 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>backdrop</td>
-				<td>boolean</td>
-				<td>true</td>
-				<td>This adds a modal-backdrop element.</td>
+				<td>placement</td>
+				<td>top | right | bottom | left</td>
+				<td>top</td>
+				<td>Where to place the tooltip.</td>
 			</tr>
 			<tr>
-				<td>keyboard</td>
-				<td>boolean</td>
-				<td>true</td>
-				<td>Pressing escape closes the lightbox.</td>
+				<td>tooltip_show</td>
+				<td>always | hover</td>
+				<td>always</td>
+				<td>When to show the tooltip.</td>
 			</tr>
 			<tr>
-				<td>show</td>
-				<td>boolean</td>
-				<td>true</td>
-				<td>Shows the lightbox when initialized.<br><i>Note: This only applies when using JavaScript to setup the lightbox.</i></td>
+				<td>title</td>
+				<td>string</td>
+				<td>click to enlarge</td>
+				<td>Self explainatory</td>
 			</tr>
 		</tbody>
 	</table>
-</div>	</section>
+</div>
 	<section style="margin-top: 50px; margin-bottom: 50px; height: 10px;">
 		<!-- Take up space -->
 	</section>
@@ -142,11 +124,13 @@
 	<script src="assets/js/scale.fix.js"></script>
 	<script src="assets/prettify/prettify.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
-	<script src="assets/js/bootstrap-lightbox.min.js"></script>
+	<script src="assets/js/bootstrap-lightbox.js"></script>
+	<script src="assets/js/bootstrap-img-lightbox-tooltip.js"></script>
 	<script>
 	$(document).ready(function()
 	{
 		prettyPrint();
+		$("img").img_lightbox_tooltip();
 	});
 	</script>
 	<script type="text/javascript">
